@@ -103,7 +103,7 @@ include 'koneksi.php'
                                         while($konsul = mysqli_fetch_array($query3)){
                                             echo 
                                         "<tr>
-                                            <td>$konsul[id_konsel]</td>
+                                            <td>$konsul[id]</td>
                                             <td>$konsul[nama_guru]</td>
                                             <td>$konsul[nama_siswa]'</td>
                                             <td>$konsul[tanggal_konsul]'</td>

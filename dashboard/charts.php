@@ -1,3 +1,6 @@
+<?php
+include 'koneksi.php'
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -58,9 +61,9 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="layout-static.html">Teacher</a>
-                                    <a class="nav-link" href="layout-sidenav-light.html">Student</a>
-                                    <a class="nav-link" href="layout-static.html">Consult</a>
+                                <a class="nav-link" href="tabelteacher.php">Teacher</a>
+                                    <a class="nav-link" href="tabelstudent.php">Student</a>
+                                    <a class="nav-link" href="tabelconsult.php">Consult</a>
                                 </nav>
                             </div>
                         </div>
@@ -96,7 +99,7 @@
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-chart-pie me-1"></i>
-                                        Chart Alamat
+                                        Chart Kelas
                                     </div>
                                     <div class="card-body"><canvas id="myPieChart" width="100%" height="50"></canvas></div>
                                 </div>
@@ -109,8 +112,151 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/chart-area-demo.js"></script>
-        <script src="assets/demo/chart-bar-demo.js"></script>
-        <script src="assets/demo/chart-pie-demo.js"></script>
+        <?php
+            $tanggal_konsul= "";
+            $jumlah=null;
+            //Query SQL
+            $sql="select tanggal_konsul,COUNT(*) as 'total' from data_konsul GROUP by tanggal_konsul";
+            $query=mysqli_query($connect,$sql);
+
+            while ($data = mysqli_fetch_array($query)) {
+                //Mengambil nilai tanggal_konsul dari database
+                $jur=$data['tanggal_konsul'];
+                $tanggal_konsul .= "'$jur'". ", ";
+                //Mengambil nilai total dari database
+                $jum=$data['total'];
+                $jumlah .= "$jum". ", ";
+
+            }
+        ?>
+        <script>
+            var ctx = document.getElementById('myAreaChart');
+            var chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'line',
+                // The data for our dataset
+                data: {
+                    labels: [<?php echo $tanggal_konsul; ?>],
+                    datasets: [{
+                        label: "Recent Consult",
+                        lineTension: 0.3,
+                        backgroundColor: "rgba(2,117,216,0.2)",
+                        borderColor: "rgba(2,117,216,1)",
+                        pointRadius: 5,
+                        pointBackgroundColor: "rgba(2,117,216,1)",
+                        pointBorderColor: "rgba(255,255,255,0.8)",
+                        pointHoverRadius: 5,
+                        pointHoverBackgroundColor: "rgba(2,117,216,1)",
+                        pointHitRadius: 50,
+                        pointBorderWidth: 2,
+                        data: [<?php echo $jumlah; ?>]
+                    }]
+                },
+
+                // Configuration options go here
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    }
+                }
+            });
+        </script>
+        <?php
+            $kelamin= "";
+            $jumlah=null;
+            //Query SQL
+            $sql="select kelamin,COUNT(*) as 'total' from siswa GROUP by kelamin";
+            $query=mysqli_query($connect,$sql);
+
+            while ($data = mysqli_fetch_array($query)) {
+                //Mengambil nilai kelamin dari database
+                $jur=$data['kelamin'];
+                $kelamin .= "'$jur'". ", ";
+                //Mengambil nilai total dari database
+                $jum=$data['total'];
+                $jumlah .= "$jum". ", ";
+
+            }
+        ?>
+        <script>
+            var ctx = document.getElementById('myBarChart');
+            var chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'pie',
+                // The data for our dataset
+                data: {
+                    labels: [<?php echo $kelamin; ?>],
+                    datasets: [{
+                        label: "Revenue",
+                        backgroundColor: ['#007bff', '#dc3545'],
+                        borderColor: "#ffff",
+                        data: [<?php echo $jumlah; ?>]
+                    }]
+                },
+
+                // Configuration options go here
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    }
+                }
+            });
+
+        </script>
+                <?php
+            $kelas= "";
+            $jumlah=null;
+            //Query SQL
+            $sql="select kelas,COUNT(*) as 'total' from siswa GROUP by kelas";
+            $query=mysqli_query($connect,$sql);
+
+            while ($data = mysqli_fetch_array($query)) {
+                //Mengambil nilai kelas dari database
+                $jur=$data['kelas'];
+                $kelas .= "'$jur'". ", ";
+                //Mengambil nilai total dari database
+                $jum=$data['total'];
+                $jumlah .= "$jum". ", ";
+
+            }
+        ?>
+        <script>
+            var ctx = document.getElementById('myPieChart');
+            var chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'pie',
+                // The data for our dataset
+                data: {
+                    labels: [<?php echo $kelas; ?>],
+                    datasets: [{
+                        label: "Revenue",
+                        backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745'],
+                        borderColor: "#ffff",
+                        data: [<?php echo $jumlah; ?>]
+                    }]
+                },
+
+                // Configuration options go here
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    }
+                }
+            });
+
+        </script>
+
     </body>
 </html>

@@ -79,6 +79,7 @@ include 'koneksi.php'
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
                             <li class="breadcrumb-item active">Tables</li>
+                            <div><a href="formcreateguru.php" class="btn-tmbh"><p>+</p></a></div>
                         </ol>
                         <div class="card mb-4">
                             <div class="card-header">
@@ -97,7 +98,7 @@ include 'koneksi.php'
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $sql1 ="SELECT * FROM guru";
+                                        $sql1 = "SELECT * FROM guru";
                                         $query1 =mysqli_query($connect, $sql1);
 
                                         while($guru = mysqli_fetch_array($query1)){

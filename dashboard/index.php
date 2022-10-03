@@ -1,9 +1,23 @@
 <?php
-include 'koneksi.php'
+include 'koneksi.php';
+$sql_guru = "SELECT * FROM guru";
+$data_guru = mysqli_query($connect, $sql_guru);
+$jumlah_guru = mysqli_num_rows($data_guru);
+
+$sql_siswa = "SELECT * FROM siswa";
+$data_siswa = mysqli_query($connect, $sql_siswa);
+$jumlah_siswa = mysqli_num_rows($data_siswa);
+
+$sql_konsul = "SELECT * FROM data_konsul";
+$data_konsul = mysqli_query($connect, $sql_konsul);
+$jumlah_konsul = mysqli_num_rows($data_konsul);
+
+$total = $jumlah_guru + $jumlah_siswa + $jumlah_konsul;
+
+$sql_konsultan_terbaru = "SELECT * FROM data_konsul ";
+$data_konsultan = mysqLi_query($connect, $sql_konsultan_terbaru);
+
 ?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -66,8 +80,8 @@ include 'koneksi.php'
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="tabelteacher.php">Teacher</a>
-                                    <a class="nav-link" href="layout-tabelteacher.php">Student</a>
-                                    <a class="nav-link" href="tabelteacher.php">Consult</a>
+                                    <a class="nav-link" href="tabelstudent.php">Student</a>
+                                    <a class="nav-link" href="tabelconsult.php">Consult</a>
                                 </nav>
                             </div>
                         </div>
@@ -85,9 +99,9 @@ include 'koneksi.php'
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-danger text-white mb-4">
                                     <div class="card-body">Total Data</div>
-                                    <p style="margin: 0px 0px 20px 20px; font-size: 20px;">10</p>
+                                    <p style="margin: 0px 0px 20px 20px; font-size: 20px;"><?php echo"$total"?></p>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
+                                        <a class="small text-white stretched-link" href="index.php">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
@@ -95,9 +109,9 @@ include 'koneksi.php'
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-primary text-white mb-4">
                                     <div class="card-body">Total Guru</div>
-                                    <p style="margin: 0px 0px 20px 20px; font-size: 20px;">10</p>
+                                    <p style="margin: 0px 0px 20px 20px; font-size: 20px;"><?php echo"$jumlah_guru"?></p>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
+                                        <a class="small text-white stretched-link" href="tabelteacher.php">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
@@ -105,9 +119,9 @@ include 'koneksi.php'
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-warning text-white mb-4">
                                     <div class="card-body">Total Siswa</div>
-                                    <p style="margin: 0px 0px 20px 20px; font-size: 20px;">10</p>
+                                    <p style="margin: 0px 0px 20px 20px; font-size: 20px;"><?php echo"$jumlah_siswa"?></p>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
+                                        <a class="small text-white stretched-link" href="tabelstudent.php">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
@@ -115,9 +129,9 @@ include 'koneksi.php'
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-success text-white mb-4">
                                     <div class="card-body">Total Konsultasi</div>
-                                    <p style="margin: 0px 0px 20px 20px; font-size: 20px;">10</p>
+                                    <p style="margin: 0px 0px 20px 20px; font-size: 20px;"><?php echo"$jumlah_konsul"?></p>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
+                                        <a class="small text-white stretched-link" href="tabelconsult.php">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
@@ -152,24 +166,31 @@ include 'koneksi.php'
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
+                                            <th>Nama Guru</th>
+                                            <th>Nama Siswa</th>
+                                            <th>Tanggal Konsultasi</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
+                                            <th>Nama Guru</th>
+                                            <th>Nama Siswa</th>
+                                            <th>Tanggal Konsultasi</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                        </tr>
+                                    <?php
+                                    $data_konsultan = mysqLi_query ($connect,$sql_konsultan_terbaru);
+                                        while($data = mysqLi_fetch_array($data_konsultan)){
+                                            echo "
+                                    <tr>
+                                        <td>$data[nama_guru]</td>
+                                        <td>$data[nama_siswa]</td>
+                                        <td>$data[tanggal_konsul]</td>
+                                    </tr>
+                                    ";
+                                    }
+                                    ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -181,8 +202,105 @@ include 'koneksi.php'
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/chart-area-demo.js"></script>
-        <script src="assets/demo/chart-bar-demo.js"></script>
+        <?php
+            $tanggal_konsul= "";
+            $jumlah=null;
+            //Query SQL
+            $sql="select tanggal_konsul,COUNT(*) as 'total' from data_konsul GROUP by tanggal_konsul";
+            $query=mysqli_query($connect,$sql);
+
+            while ($data = mysqli_fetch_array($query)) {
+                //Mengambil nilai tanggal_konsul dari database
+                $jur=$data['tanggal_konsul'];
+                $tanggal_konsul .= "'$jur'". ", ";
+                //Mengambil nilai total dari database
+                $jum=$data['total'];
+                $jumlah .= "$jum". ", ";
+
+            }
+        ?>
+        <script>
+            var ctx = document.getElementById('myAreaChart');
+            var chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'line',
+                // The data for our dataset
+                data: {
+                    labels: [<?php echo $tanggal_konsul; ?>],
+                    datasets: [{
+                        label: "Recent Consult",
+                        lineTension: 0.3,
+                        backgroundColor: "rgba(2,117,216,0.2)",
+                        borderColor: "rgba(2,117,216,1)",
+                        pointRadius: 5,
+                        pointBackgroundColor: "rgba(2,117,216,1)",
+                        pointBorderColor: "rgba(255,255,255,0.8)",
+                        pointHoverRadius: 5,
+                        pointHoverBackgroundColor: "rgba(2,117,216,1)",
+                        pointHitRadius: 50,
+                        pointBorderWidth: 2,
+                        data: [<?php echo $jumlah; ?>]
+                    }]
+                },
+
+                // Configuration options go here
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    }
+                }
+            });
+        </script>
+        <?php
+            $kelamin= "";
+            $jumlah=null;
+            //Query SQL
+            $sql="select kelamin,COUNT(*) as 'total' from siswa GROUP by kelamin";
+            $query=mysqli_query($connect,$sql);
+
+            while ($data = mysqli_fetch_array($query)) {
+                //Mengambil nilai kelamin dari database
+                $jur=$data['kelamin'];
+                $kelamin .= "'$jur'". ", ";
+                //Mengambil nilai total dari database
+                $jum=$data['total'];
+                $jumlah .= "$jum". ", ";
+
+            }
+        ?>
+        <script>
+            var ctx = document.getElementById('myBarChart');
+            var chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'pie',
+                // The data for our dataset
+                data: {
+                    labels: [<?php echo $kelamin; ?>],
+                    datasets: [{
+                        label: "Revenue",
+                        backgroundColor: ['#007bff', '#dc3545'],
+                        borderColor: "#ffff",
+                        data: [<?php echo $jumlah; ?>]
+                    }]
+                },
+
+                // Configuration options go here
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    }
+                }
+            });
+
+        </script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
     </body>
