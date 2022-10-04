@@ -17,7 +17,7 @@
         $fileExt = explode('.', $fileName);
         $fileActualExt = strtolower(end($fileExt));
 
-        $allowed = array('jpg','jpeg','png','jfif','gif','psd','pdf','eps','webp');
+        $allowed = array('jpg','jpeg','png','jfif','gif','psd','pdf','eps','webp','mp4','mp3','wmv','docx','xlsx');
 
         if(in_array($fileActualExt, $allowed)){
             if($fileError === 0){
@@ -33,7 +33,7 @@
         }
     }
 
-    $sqldokter = "INSERT INTO guru (id_guru, nama_guru, gambar, kelamin) VALUES ('$id_guru','$nama_guru', '$fileNameNew', '$kelamin')";
+    $sqldokter = "INSERT INTO guru (id_guru, nama_guru, gambar, kelamin) VALUES ('$id_guru','$nama_guru', '$fileName', '$kelamin')";
     $querydokter = mysqli_query($connect, $sqldokter);
 
     if($querydokter){

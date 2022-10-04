@@ -34,7 +34,7 @@ $data_konsultan = mysqLi_query($connect, $sql_konsultan_terbaru);
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.php">Start Bootstrap</a>
+            <a class="navbar-brand ps-3" href="index.php">Close-Friend</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -160,7 +160,7 @@ $data_konsultan = mysqLi_query($connect, $sql_konsultan_terbaru);
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                DataTable Example
+                                Data Table Recent Consult
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
@@ -173,9 +173,11 @@ $data_konsultan = mysqLi_query($connect, $sql_konsultan_terbaru);
                                     </thead>
                                     <tfoot>
                                         <tr>
+                                            <th></th>
                                             <th>Nama Guru</th>
                                             <th>Nama Siswa</th>
                                             <th>Tanggal Konsultasi</th>
+                                            <th>Action</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>

@@ -1,21 +1,24 @@
 <?php
-include 'koneksi.php'
+include 'koneksi.php';
+$iddokter = hexdec(uniqid())
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Dashboard - SB Admin</title>
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet" />
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    </head>
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.php">Start Bootstrap</a>
+            <a class="navbar-brand ps-3" href="index.php">Close-Friend</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -61,14 +64,71 @@ include 'koneksi.php'
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="tabelteacher.php">Teacher</a>
-                                    <a class="nav-link" href="layout-tabelteacher.php">Student</a>
-                                    <a class="nav-link" href="tabelteacher.php">Consult</a>
+                                    <a class="nav-link" href="tabelstudent.php">Student</a>
+                                    <a class="nav-link" href="tabelconsult.php">Consult</a>
                                 </nav>
                             </div>
                         </div>
                     </div>
                 </nav>
             </div>
-    
-</body>
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4">
+                        <h1 class="mt-4">Add Teacher</h1>
+                        <ol class="breadcrumb mb-4">    
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol>
+                    </div>
+                    <div class="container">
+                    <div class="card-content">
+                        <div class="container">
+                    <div class="edit-content">
+                        <form action="simpanteacher.php" method="post" enctype="multipart/form-data">
+                        <div class="form-edit">
+                            <table>
+                                <tr>
+                                    <th>Id</th>
+                                </tr>
+                                <tr>
+                                    <td><input type="text" name="id_guru" value="<?php echo $iddokter?>" readonly></td>
+                                </tr>
+                                <tr>
+                                    <th>Nama Guru :</th>
+                                </tr>
+                                <tr>
+                                    <td><input type="text" name="nama_guru" required="required" autocomplete="off"></td>
+                                </tr>
+                                <tr>
+                                    <th>Kelamin :</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="radio" id="laki_laki" name="kelamin" value="laki-laki" required="required">
+                                        <label for="laki_laki">Laki-laki</label>
+                                        <input type="radio" id="perempuan" name="kelamin" value="perempuan"required="required">
+                                        <label for="perempuan">Perempuan</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Profile Picture :</th>
+                                </tr>
+                                <tr>
+                                    <td><input type="file" name="file" required="required"></td>
+                                </tr>
+                            </table>
+                            <div class="btn-simpan-cancel">
+                                <a class="" href="tabelteacher.php">cancel</a>
+                                <input type="submit" name="simpanteacher" value="simpan">
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+        <script src="js/datatables-simple-demo.js"></script>
+    </body>
 </html>

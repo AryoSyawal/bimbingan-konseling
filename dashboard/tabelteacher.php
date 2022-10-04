@@ -18,7 +18,7 @@ include 'koneksi.php'
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.php">Start Bootstrap</a>
+            <a class="navbar-brand ps-3" href="index.php">Close-Friend</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -94,6 +94,7 @@ include 'koneksi.php'
                                             <th>Nama</th>
                                             <th>Gambar</th>
                                             <th>Kelamin</th>
+                                            <th>Edit</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -106,8 +107,12 @@ include 'koneksi.php'
                                         "<tr>
                                             <td>$guru[id_guru]</td>
                                             <td>$guru[nama_guru]</td>
-                                            <td>'uploads/$guru[gambar]'</td>
+                                            <td><img src='uploads/$guru[gambar]' width='70px'></td>
                                             <td>$guru[kelamin]</td>
+                                            
+                                            <td>
+                                            <a href='formeditguru.php?id_guru=".$guru['id_guru']."'>Ubah</a>
+                                            <a href='hapusguru.php?id_guru=".$guru['id_guru']."'>Hapus</a>
                                         </tr>";
                                         }
                                         ?>
