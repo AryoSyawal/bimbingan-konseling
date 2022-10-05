@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styleform.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo-navbar">
+            <img src="asset/light-bulb.png" alt="">
+            <h1>CLOSE <span>FRIENDS</span></h1>
+        </div>
+        <div class="menu">
+            <ul class="ul-navbar">
+                <li class="li-navbar">
+                    <a href="index.html"><img src="asset/home-color.png" alt="">HOME</a>
+                </li>
+            </ul>
+            <ul class="ul-navbar">
+                <li class="li-navbar">
+                    <a href="video.html"><img src="asset/video.png" alt="">VIDEO</a>
+                </li>
+            </ul>
+            <ul class="ul-navbar">
+                <li class="li-navbar">
+                    <a href="consult.html"><img src="asset/note.png" alt="">CONSULT</a>
+                </li>
+            </ul>
+           
+        </div>
+    </div>
+    <div class="backgroundform"></div>
+    <!-- form -->
+<form action="simpankonsul.php" method="POST">
+    <div class="backgroundcardform">
+        <table>
+            <div class="judul_form">
+                <h2>Form Konsultasi</h2>
+            </div>
+            <tr>
+                <td>Nama Siswa :</td>
+            </tr>
+            <tr>
+                <td><input type="text" name="nama_pasien" required="required" autocomplete="off"></td>
+            </tr>
+            <tr>
+                <td>Kelas :</td>
+            </tr>
+            <tr>
+                <td>
+                    <select name="kelas" id="">
+                        <option disabled selected hidden value="">Pilih Kelas</option>
+                        <option value="X TJKT">X TJKT</option>
+                        <option value="XI TJKT">XI TJKT</option>
+                        <option value="XII TJKT">XII TJKT</option>
+                        <option value="X PPLG">X PPLG</option>
+                        <option value="XI PPLG">XI PPLG</option>
+                        <option value="XII PPLG">XII PPLG</option>
+                        <option value="X ANIMASI">X ANIMASI</option>
+                        <option value="XI ANIMASI">XI ANIMASI</option>
+                        <option value="XII ANIMASI">XII ANIMASI</option>
+                        <option value="X BROADCAST">X BROADCAST</option>
+                        <option value="XI BROADCAST">XI BROADCAST</option>
+                        <option value="XII BROADCAST">XII BROADCAST</option>
+                        <option value="X TE">X TE</option>
+                        <option value="XI TE">XI TE</option>
+                        <option value="XII TE">XII TE</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Jenis Kelamin :</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="radio" id="laki_laki" name="jenis_kelamin" value="laki-laki" >
+                    <label for="laki_laki">Laki-laki</label>
+                    <input type="radio" id="perempuan" name="jenis_kelamin" value="perempuan">
+                    <label for="perempuan">Perempuan</label>
+                </td>
+            </tr>
+            <tr>
+                <td>Nama Guru :</td>
+            </tr>
+            <tr>
+                <td><select name="nama_guru" id="">
+                    <option disabled selected hidden value="">Pilih Guru Yang Anda Ingin</option>
+                    <option value="Ibrahim Khalish">Ibrahim Khalish</option>
+                    <option value="Divadan Arya Putrama">Divadan Arya Putrama</option>
+                    <option value="Aryo Syawalito Bimo">Aryo Syawalito Bimo</option>
+                    <option value="Andy Alphard Rahmana">Andy Alphard Rahmana</option>
+                    <option value="Kevin Arya Putra">Kevin Arya Putra</option>
+                    <option value="Rasya Fadil">Rasya Fadillah</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td>Tanggal Konsultasi :</td>
+            </tr>
+            <tr>
+                <td><input type="date" name="tanggal_konsul" required="required" autocomplete="off"></td>
+            </tr>
+            <tr>    
+                <td><input type="submit"  value="simpan"></td>
+                <td><input type="reset"></td>
+            </tr>
+        </table>
+    </div>
+</form>
+</body>
+</html>

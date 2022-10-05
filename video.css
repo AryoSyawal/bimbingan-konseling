@@ -1,0 +1,116 @@
+html{
+    scroll-behavior: smooth;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+/* NAVBAR */
+.li-navbar{
+    list-style-type: none;
+}
+.li-navbar a{
+    font-size: 20px;
+    font-weight: 600;
+    padding: 0px 10px;
+    font-family: 'Quicksand', sans-serif;
+    color: black;
+    display: flex;
+    align-items: center;
+}
+.li-navbar img{
+    width: 35px;
+    padding: 10px;
+}
+.ul-navbar{
+    margin-right: 35px;
+}
+.navbar{
+    background-color: #3AB0FF;
+    display: flex;
+    height: 80px;
+    width: 100%;
+    position: fixed;
+    z-index: 999;
+}
+.logo-navbar{
+    display: flex;
+    align-items: center;
+}
+.logo-navbar img{
+    width: 65px;
+    height: 65px; 
+}
+.logo-navbar h1{
+    font-size: 35px;
+    font-family: 'Quicksand', sans-serif;
+    width: 500px;
+}
+.logo-navbar span:last-child{
+    color: white;
+}
+.menu{
+    display: flex;
+    margin-top: 10px;
+    width: 100%;
+    justify-content: right;
+}
+.menu .ul-navbar:hover{
+    background-color: #ffffff;
+    text-decoration: underline;
+    transition: .3s;
+}
+/* CONTENT */
+
+.judul-content{
+    top: 150px;
+    width: 25%;
+    padding: 20px;
+    top: 200px;
+    position: relative;
+    background-color: #3AB0FF;
+    color: black;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 35px;
+    text-align: center;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    
+}
+.content-video{
+    background-color: #9cd7ff;
+    box-shadow: 5px;
+    position: relative;
+    top: 200px;
+    width: 100%;
+    margin-top: 80px;
+}
+.row{
+    display: flex;
+    padding: 20px;
+}
+
+.row .yt{
+    width: 1000px;
+    height: 225px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+.row .text-video .judul-video{
+    text-align: center;
+    margin-left: 290px;
+    background-color: #3AB0FF;
+    width: 500px;
+    font-size: 23px;
+    font-family: 'Quicksand', sans-serif;
+}
+.row .text-video .paragraf-video{
+    text-align: right;
+    margin-right: 100px;
+    margin-top: 30px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
+}
